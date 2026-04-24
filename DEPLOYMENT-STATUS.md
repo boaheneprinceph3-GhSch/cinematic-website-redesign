@@ -82,9 +82,9 @@ Once you have the live URL, we'll:
 | GitHub Repo | ✅ Created & Public |
 | Code Pushed | ✅ All files uploaded |
 | Documentation | ✅ Complete |
-| Vercel Deployment | ⏳ Waiting for manual import |
-| Live URL | ⏳ Pending deployment |
-| README Update | ⏳ After deployment |
+| Vercel Deployment | ✅ DEPLOYED |
+| Live URL | ✅ https://balstudio-cinematic-78o5x47bm-boaheneprinceph4-7854s-projects.vercel.app |
+| README Update | ✅ Updated with live URL |
 
 ---
 

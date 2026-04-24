@@ -8,7 +8,7 @@ Visual overview of all cinematic website projects in this portfolio.
 
 **Industry:** Architecture & Design  
 **Location:** Accra, Ghana  
-**Live Site:** [View Site](#) *(Update after deployment)*  
+**Live Site:** [View Site](https://balstudio-cinematic-78o5x47bm-boaheneprinceph4-7854s-projects.vercel.app)  
 **Code:** [View Code](./balstudio-cinematic)
 
 ### Overview

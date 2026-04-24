@@ -6,7 +6,7 @@ A collection of scroll-driven, cinematic websites built with vanilla JavaScript,
 
 | Project | Industry | Description | Live Site | Code |
 |---------|----------|-------------|-----------|------|
-| **Balstudio** | Architecture | Award-winning architecture firm with scroll-scrubbed video, text mask reveals, and interactive waves background | [View Site](#) | [Code](./balstudio-cinematic) |
+| **Balstudio** | Architecture | Award-winning architecture firm with scroll-scrubbed video, text mask reveals, and interactive waves background | [View Site](https://balstudio-cinematic-78o5x47bm-boaheneprinceph4-7854s-projects.vercel.app) | [Code](./balstudio-cinematic) |
 
 *More projects coming soon...*
 
