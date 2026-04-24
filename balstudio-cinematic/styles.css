@@ -108,12 +108,14 @@ body {
 }
 
 #hero-video {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     z-index: 1;
+    transition: opacity 0.3s ease-out, transform 0.6s ease-out, filter 0.6s ease-out;
 }
 
 /* Text Mask Overlay — outlined text on dark overlay */
@@ -937,4 +939,288 @@ blockquote {
         gap: 1rem;
         text-align: center;
     }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   2026 ENHANCEMENTS — Custom Cursor
+   ═══════════════════════════════════════════════════════════ */
+
+.custom-cursor {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    mix-blend-mode: difference;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+}
+
+.cursor-outline {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--accent-gold);
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-cursor.hover .cursor-dot {
+    width: 16px;
+    height: 16px;
+    background: var(--text-light);
+}
+
+.custom-cursor.hover .cursor-outline {
+    width: 56px;
+    height: 56px;
+    border-color: var(--text-light);
+}
+
+/* Hide default cursor on interactive elements */
+a, button, .flip-card, .accordion-panel {
+    cursor: none;
+}
+
+@media (max-width: 768px) {
+    .custom-cursor {
+        display: none;
+    }
+    
+    a, button, .flip-card, .accordion-panel {
+        cursor: pointer;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2026 ENHANCEMENTS — Smooth Scroll Wrapper
+   ═══════════════════════════════════════════════════════════ */
+
+#smooth-wrapper {
+    overflow: hidden;
+}
+
+#smooth-content {
+    overflow: visible;
+    width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2026 ENHANCEMENTS — Glassmorphism
+   ═══════════════════════════════════════════════════════════ */
+
+.flip-front {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.nav {
+    background: rgba(26, 26, 26, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.cta {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2026 ENHANCEMENTS — Magnetic Button Effects
+   ═══════════════════════════════════════════════════════════ */
+
+.cta, .nav-cta, .contact-form button {
+    will-change: transform;
+}
+
+.cta::before, .nav-cta::before, .contact-form button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.3), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.cta:hover::before, .nav-cta:hover::before, .contact-form button:hover::before {
+    opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2026 ENHANCEMENTS — Particle Container
+   ═══════════════════════════════════════════════════════════ */
+
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2026 ENHANCEMENTS — Performance Optimizations
+   ═══════════════════════════════════════════════════════════ */
+
+.flip-card {
+    will-change: transform;
+}
+
+.accordion-panel {
+    will-change: flex;
+}
+
+.panel-bg {
+    will-change: transform;
+}
+
+.stat {
+    will-change: transform;
+}
+
+.stat-num {
+    will-change: contents;
+}
+
+/* Enhanced hover states */
+.flip-card:hover {
+    transform: translateY(-8px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion-panel:hover .panel-bg {
+    filter: brightness(1.1);
+}
+
+.stat:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2026 ENHANCEMENTS — Smooth Reveal Animations
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Text shimmer effect on hover */
+.section-header h2:hover {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent-gold) 50%, var(--primary) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   2026 ENHANCEMENTS — Hero to Services Transition
+   ═══════════════════════════════════════════════════════════ */
+
+.services {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.services.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth reveal for section header */
+.services .section-header {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.services.visible .section-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered reveal for flip cards */
+.services .flip-card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.services.visible .flip-card:nth-child(1) {
+    transition-delay: 0.3s;
+}
+
+.services.visible .flip-card:nth-child(2) {
+    transition-delay: 0.4s;
+}
+
+.services.visible .flip-card:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+.services.visible .flip-card:nth-child(4) {
+    transition-delay: 0.6s;
+}
+
+.services.visible .flip-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
