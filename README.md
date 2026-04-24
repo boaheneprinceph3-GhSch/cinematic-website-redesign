@@ -141,11 +141,10 @@ Cinematic components: MIT License (RoboNuggets)
 
 ## 📬 Contact
 
-Built by [Your Name]
+Built by boaheneprinceph3
 
-- Portfolio: [your-portfolio.com](#)
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: [@boaheneprinceph3-GhSch](https://github.com/boaheneprinceph3-GhSch)
+- Email: boaheneprinceph3@gmail.com
 
 ---
 
