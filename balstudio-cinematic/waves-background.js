@@ -274,8 +274,19 @@ class WavesBackground {
     }
     
     onMouseMove(e) {
-        this.mouse.x = e.clientX - this.bounding.left;
-        this.mouse.y = e.clientY - this.bounding.top;
+        // Recalculate bounding rect to account for scroll/zoom
+        const rect = this.container.getBoundingClientRect();
+        this.mouse.x = e.clientX - rect.left;
+        this.mouse.y = e.clientY - rect.top;
+        
+        // Check if mouse is outside container bounds
+        if (this.mouse.x < 0 || this.mouse.x > rect.width || 
+            this.mouse.y < 0 || this.mouse.y > rect.height) {
+            // Move mouse far away to stop interaction when outside section
+            this.mouse.x = -1000;
+            this.mouse.y = -1000;
+            this.mouse.vs = 0;
+        }
         
         if (!this.mouse.set) {
             this.mouse.sx = this.mouse.x;
