@@ -42,3 +42,6 @@ desktop.ini
 
 # Kiro settings (keep local only)
 .kiro/
+
+# OneDrive temp files
+.tmp.driveupload/
