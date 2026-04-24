@@ -15,7 +15,8 @@
     const video = document.getElementById('hero-video');
     const hero = document.querySelector('.hero');
     const MUX_PLAYBACK_ID = 'GaXk3Mg8nBRfBd1j7ECAw5cOrgwLh3hQQ58402kZitJI';
-    const MUX_VIDEO_URL = `https://stream.mux.com/${MUX_PLAYBACK_ID}.m3u8`;
+    // Force high quality: rendition_order=desc starts at highest quality, max_resolution ensures 1080p
+    const MUX_VIDEO_URL = `https://stream.mux.com/${MUX_PLAYBACK_ID}.m3u8?rendition_order=desc&max_resolution=1080p`;
     
     if (video && hero) {
         // Check if HLS is supported natively (Safari)
@@ -28,7 +29,12 @@
             const hls = new Hls({
                 enableWorker: true,
                 lowLatencyMode: false,
-                backBufferLength: 90
+                backBufferLength: 90,
+                // Quality settings for better video quality
+                startLevel: -1,  // -1 = auto-select based on bandwidth (will use rendition_order from Mux)
+                capLevelToPlayerSize: false,  // Don't limit quality based on player size
+                maxMaxBufferLength: 600,  // Allow more buffering for smoother playback
+                abrEwmaDefaultEstimate: 5000000  // Start with 5Mbps estimate (optimistic for high quality)
             });
             
             hls.loadSource(MUX_VIDEO_URL);
