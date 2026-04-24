@@ -122,8 +122,6 @@ class WavesBackground {
         // Bind methods
         this.onResize = this.onResize.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
-        this.onMouseEnter = this.onMouseEnter.bind(this);
-        this.onMouseLeave = this.onMouseLeave.bind(this);
         this.tick = this.tick.bind(this);
         
         // Setup
@@ -135,9 +133,7 @@ class WavesBackground {
         
         // Event listeners
         window.addEventListener('resize', this.onResize);
-        this.container.addEventListener('mousemove', this.onMouseMove);
-        this.container.addEventListener('mouseenter', this.onMouseEnter);
-        this.container.addEventListener('mouseleave', this.onMouseLeave);
+        window.addEventListener('mousemove', this.onMouseMove);
     }
     
     setSize() {
@@ -278,10 +274,8 @@ class WavesBackground {
     }
     
     onMouseMove(e) {
-        // Recalculate bounding on every mouse move to account for scroll/zoom
-        const rect = this.container.getBoundingClientRect();
-        this.mouse.x = e.clientX - rect.left;
-        this.mouse.y = e.clientY - rect.top;
+        this.mouse.x = e.clientX - this.bounding.left;
+        this.mouse.y = e.clientY - this.bounding.top;
         
         if (!this.mouse.set) {
             this.mouse.sx = this.mouse.x;
@@ -292,34 +286,12 @@ class WavesBackground {
         }
     }
     
-    onMouseEnter(e) {
-        // Reset mouse state when entering section
-        const rect = this.container.getBoundingClientRect();
-        this.mouse.x = e.clientX - rect.left;
-        this.mouse.y = e.clientY - rect.top;
-        this.mouse.sx = this.mouse.x;
-        this.mouse.sy = this.mouse.y;
-        this.mouse.lx = this.mouse.x;
-        this.mouse.ly = this.mouse.y;
-        this.mouse.set = true;
-    }
-    
-    onMouseLeave() {
-        // Move cursor off-screen when leaving section to stop interaction
-        this.mouse.x = -1000;
-        this.mouse.y = -1000;
-        this.mouse.vs = 0;
-        this.mouse.v = 0;
-    }
-    
     destroy() {
         if (this.frameId) {
             cancelAnimationFrame(this.frameId);
         }
         window.removeEventListener('resize', this.onResize);
-        this.container.removeEventListener('mousemove', this.onMouseMove);
-        this.container.removeEventListener('mouseenter', this.onMouseEnter);
-        this.container.removeEventListener('mouseleave', this.onMouseLeave);
+        window.removeEventListener('mousemove', this.onMouseMove);
         if (this.canvas.parentNode) {
             this.canvas.parentNode.removeChild(this.canvas);
         }
