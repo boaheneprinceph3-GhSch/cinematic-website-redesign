@@ -1,0 +1,51 @@
+# Quick Command Reference
+
+Copy and paste these commands in order.
+
+## STEP 1: Initialize Git
+cd "C:\Users\HP PAVILION\OneDrive\Desktop\Cinematic-Website Redesign"
+git init
+git add .
+git commit -m "Initial commit: Cinematic website redesigns portfolio"
+
+## STEP 2A: Create GitHub Repo (Using GitHub CLI - Fastest)
+gh auth login
+gh repo create cinematic-website-redesign --public --source=. --remote=origin --push
+
+## STEP 2B: Create GitHub Repo (Manual - if no GitHub CLI)
+# 1. Go to https://github.com/new
+# 2. Create repo named: cinematic-website-redesign
+# 3. Then run:
+git remote add origin https://github.com/YOUR_USERNAME/cinematic-website-redesign.git
+git branch -M main
+git push -u origin main
+
+## STEP 3: Deploy to Vercel (CLI Method)
+npm i -g vercel
+vercel login
+cd balstudio-cinematic
+vercel --prod
+
+## STEP 3 (Alternative): Deploy via Dashboard
+# Go to: https://vercel.com/new
+# Import: cinematic-website-redesign
+# Root Directory: balstudio-cinematic
+# Click Deploy
+
+## STEP 4: Update README with Live URL
+# After deployment, edit README.md with your actual Vercel URL
+git add README.md
+git commit -m "Add live site URL"
+git push
+
+## Future Updates
+git add .
+git commit -m "Your update message"
+git push
+# Vercel auto-deploys!
+
+## Useful Commands
+git status                    # Check what changed
+git log --oneline            # View commit history
+vercel --prod                # Redeploy to production
+vercel ls                    # List all deployments

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balstudio — Transform Spaces Into Art</title>
+    <meta name="description" content="Award-winning architecture firm in Accra, Ghana. Creating architectural masterpieces that blend innovation, functionality, and timeless design.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    <!-- GSAP for cinematic components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="waves-background.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">Balstudio</div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="nav-menu">
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact" class="nav-cta">Get In Touch</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section — Scroll-scrubbed video -->
+    <section class="hero" id="hero">
+        <video id="hero-video" src="assets/hero.mp4" muted playsinline preload="metadata" poster="assets/hero-poster.jpg"></video>
+        
+        <!-- Text Mask Reveal Overlay -->
+        <div class="hero-mask-overlay">
+            <div class="hero-mask-text">WHERE<br>VISION<br>MEETS<br>PRECISION</div>
+        </div>
+        
+        <div class="hero-mask-reveal">
+            <div class="hero-mask-text-filled">WHERE<br>VISION<br>MEETS<br>PRECISION</div>
+        </div>
+        
+        <div class="hero-overlay">
+            <p class="hero-tagline">Transform Spaces Into Art</p>
+            <p class="hero-subtitle">Award-winning architecture that transcends the ordinary</p>
+            <a class="cta" href="#projects">
+                View Portfolio
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span class="material-symbols-outlined">expand_more</span>
+        </div>
+    </section>
+
+    <!-- Services Section — 3D Flip Cards -->
+    <section class="services waves-bg" id="services">
+        <div class="section-header">
+            <span class="section-label">What We Do</span>
+            <h2>Our Services</h2>
+        </div>
+        
+        <div class="flip-grid">
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="service-icon">
+                            <span class="material-symbols-outlined">home</span>
+                        </div>
+                        <div class="flip-front-content">
+                            <div class="service-num">01</div>
+                            <h3>Residential Design</h3>
+                            <p>Dream homes & luxury estates</p>
+                        </div>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Residential Design</h3>
+                        <p>Crafting dream homes that reflect your lifestyle and personality with meticulous attention to detail. From modern villas to luxury estates, we create spaces that inspire daily living and stand the test of time.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="service-icon">
+                            <span class="material-symbols-outlined">apartment</span>
+                        </div>
+                        <div class="flip-front-content">
+                            <div class="service-num">02</div>
+                            <h3>Commercial Spaces</h3>
+                            <p>Offices & retail environments</p>
+                        </div>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Commercial Spaces</h3>
+                        <p>Designing functional and inspiring workspaces that enhance productivity and brand identity. Corporate headquarters, retail spaces, and mixed-use developments that make a lasting impression.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="service-icon">
+                            <span class="material-symbols-outlined">chair</span>
+                        </div>
+                        <div class="flip-front-content">
+                            <div class="service-num">03</div>
+                            <h3>Interior Architecture</h3>
+                            <p>Harmonious interior spaces</p>
+                        </div>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Interior Architecture</h3>
+                        <p>Transforming interiors into harmonious spaces that balance aesthetics with functionality. Every detail curated to create environments that elevate daily life and reflect your unique vision.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="service-icon">
+                            <span class="material-symbols-outlined">eco</span>
+                        </div>
+                        <div class="flip-front-content">
+                            <div class="service-num">04</div>
+                            <h3>Sustainable Design</h3>
+                            <p>Eco-conscious architecture</p>
+                        </div>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Sustainable Design</h3>
+                        <p>Integrating eco-conscious principles with cutting-edge design. Energy-efficient systems, natural materials, and biophilic design that respects our environment while creating beautiful spaces.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects — Accordion Slider -->
+    <section class="projects" id="projects">
+        <div class="section-header">
+            <span class="section-label">Our Work</span>
+            <h2>Featured Projects</h2>
+        </div>
+        
+        <div class="accordion">
+            <div class="accordion-panel active">
+                <div class="panel-bg" style="background: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&h=800&fit=crop&q=80') center/cover;"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-title">Modern Villa</div>
+                <div class="panel-content">
+                    <div class="panel-num">01</div>
+                    <div class="panel-h3">Skyline Residence</div>
+                    <div class="panel-desc">A contemporary masterpiece overlooking Accra's skyline. Floor-to-ceiling glass, infinity pool, and sustainable design.</div>
+                </div>
+            </div>
+            
+            <div class="accordion-panel">
+                <div class="panel-bg" style="background: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop&q=80') center/cover;"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-title">Luxury Estate</div>
+                <div class="panel-content">
+                    <div class="panel-num">02</div>
+                    <div class="panel-h3">Golden Horizon Estate</div>
+                    <div class="panel-desc">Six-bedroom luxury estate with private gardens, home theater, and spa. Timeless elegance meets modern comfort.</div>
+                </div>
+            </div>
+            
+            <div class="accordion-panel">
+                <div class="panel-bg" style="background: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&h=800&fit=crop&q=80') center/cover;"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-title">Corporate HQ</div>
+                <div class="panel-content">
+                    <div class="panel-num">03</div>
+                    <div class="panel-h3">TechHub Headquarters</div>
+                    <div class="panel-desc">Award-winning office building with collaborative spaces, rooftop gardens, and net-zero energy design.</div>
+                </div>
+            </div>
+            
+            <div class="accordion-panel">
+                <div class="panel-bg" style="background: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=800&fit=crop&q=80') center/cover;"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-title">Spa & Wellness</div>
+                <div class="panel-content">
+                    <div class="panel-num">04</div>
+                    <div class="panel-h3">Serenity Wellness Center</div>
+                    <div class="panel-desc">Tranquil spa retreat with natural materials, water features, and biophilic design principles throughout.</div>
+                </div>
+            </div>
+            
+            <div class="accordion-panel">
+                <div class="panel-bg" style="background: url('https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&h=800&fit=crop&q=80') center/cover;"></div>
+                <div class="panel-overlay"></div>
+                <div class="panel-title">Boutique Hotel</div>
+                <div class="panel-content">
+                    <div class="panel-num">05</div>
+                    <div class="panel-h3">The Meridian Hotel</div>
+                    <div class="panel-desc">45-room boutique hotel blending local craftsmanship with contemporary luxury. Every room tells a story.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about waves-bg" id="about">
+        <div class="about-content">
+            <span class="section-label">About Balstudio</span>
+            <h2>Award-Winning Architecture</h2>
+            <p class="about-lead">For over a decade, Balstudio has been transforming the architectural landscape of West Africa. Our team of visionary architects and designers creates spaces that inspire, endure, and elevate.</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-num">12+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">150+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">25+</div>
+                    <div class="stat-label">Awards Won</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">98%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <blockquote>
+                "The team at Balstudio brings a rare combination of creativity and technical expertise. Our new headquarters has become a landmark in the city, attracting talent and clients alike."
+            </blockquote>
+            <div class="testimonial-author">
+                <strong>Ama Mensah</strong>
+                <span>Director, Mensah Properties</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact waves-bg" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Let's collaborate to bring your architectural vision to life.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="material-symbols-outlined">email</span>
+                        <a href="mailto:hello@balstudio.com">hello@balstudio.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-symbols-outlined">phone</span>
+                        <a href="tel:+233534745487">+233 53 474 5487</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <span>Accra, Ghana</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-symbols-outlined">schedule</span>
+                        <span>Mon-Fri: 9AM - 6PM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form">
+                <div class="form-row">
+                    <input type="text" placeholder="First Name *" required>
+                    <input type="text" placeholder="Last Name *" required>
+                </div>
+                <div class="form-row">
+                    <input type="email" placeholder="Email *" required>
+                    <input type="tel" placeholder="Phone">
+                </div>
+                <select required>
+                    <option value="">Project Type *</option>
+                    <option value="residential">Residential Design</option>
+                    <option value="commercial">Commercial Space</option>
+                    <option value="interior">Interior Architecture</option>
+                    <option value="consultation">Consultation</option>
+                </select>
+                <textarea placeholder="Tell us about your project *" rows="5" required></textarea>
+                <button type="submit" class="cta">
+                    Send Message
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Balstudio</div>
+                <p>Transforming spaces into art through innovative architectural design.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#services">Services</a>
+                    <a href="#projects">Projects</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:hello@balstudio.com">hello@balstudio.com</a>
+                    <a href="tel:+233534745487">+233 53 474 5487</a>
+                    <span>Accra, Ghana</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Balstudio. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://linkedin.com" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://instagram.com" aria-label="Instagram">Instagram</a>
+                <a href="https://twitter.com" aria-label="Twitter">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

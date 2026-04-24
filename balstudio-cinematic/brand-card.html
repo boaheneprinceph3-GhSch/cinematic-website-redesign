@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balstudio — Brand Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f5f5f5;
+            --accent-gold: #d4af37;
+            --accent-warm: #8b7355;
+            --text-dark: #2c2c2c;
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-warm) 100%);
+            color: var(--text-light);
+            padding: 3rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .meta-item strong {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--accent-gold);
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 2.5rem 0 1rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.05em;
+        }
+
+        .colors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .color-swatch {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-swatch.dark {
+            color: var(--text-light);
+        }
+
+        .color-swatch.light {
+            color: var(--text-dark);
+        }
+
+        .typography {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .font-sample {
+            margin-bottom: 1.5rem;
+        }
+
+        .font-sample:last-child {
+            margin-bottom: 0;
+        }
+
+        .font-name {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .display-font {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .body-font {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .voice {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .voice-tag {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--accent-gold);
+            padding: 0.5rem 1.25rem;
+            border-radius: 24px;
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .content-block {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .content-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-text {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .theme-direction {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 2rem;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .display-font {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">Balstudio</div>
+        <div class="tagline">Transform Spaces Into Art</div>
+
+        <div class="meta">
+            <div class="meta-item">
+                <strong>Industry</strong>
+                Award-Winning Architecture
+            </div>
+            <div class="meta-item">
+                <strong>Location</strong>
+                Accra, Ghana
+            </div>
+            <div class="meta-item">
+                <strong>Target</strong>
+                High-net-worth clients & developers
+            </div>
+        </div>
+
+        <h2>Color Palette</h2>
+        <div class="colors">
+            <div class="color-swatch dark" style="background: #1a1a1a;">
+                #1a1a1a<br>Primary
+            </div>
+            <div class="color-swatch light" style="background: #f5f5f5;">
+                #f5f5f5<br>Secondary
+            </div>
+            <div class="color-swatch dark" style="background: #d4af37;">
+                #d4af37<br>Gold Accent
+            </div>
+            <div class="color-swatch light" style="background: #8b7355;">
+                #8b7355<br>Warm Accent
+            </div>
+            <div class="color-swatch dark" style="background: #2c2c2c;">
+                #2c2c2c<br>Text Dark
+            </div>
+            <div class="color-swatch dark" style="background: #ffffff;">
+                #ffffff<br>Text Light
+            </div>
+        </div>
+
+        <h2>Typography</h2>
+        <div class="typography">
+            <div class="font-sample">
+                <div class="font-name">Display — Cormorant Garamond Light</div>
+                <div class="display-font">Architectural Excellence</div>
+            </div>
+            <div class="font-sample">
+                <div class="font-name">Body — Inter Light</div>
+                <div class="body-font">Creating architectural masterpieces that blend innovation, functionality, and timeless design for discerning clients worldwide.</div>
+            </div>
+        </div>
+
+        <h2>Brand Voice</h2>
+        <div class="voice">
+            <div class="voice-tag">Sophisticated</div>
+            <div class="voice-tag">Visionary</div>
+            <div class="voice-tag">Refined</div>
+        </div>
+
+        <h2>Key Messaging</h2>
+        <div class="content-block">
+            <div class="content-label">Hero Headline</div>
+            <div class="content-text">Where Vision Meets Precision</div>
+        </div>
+        <div class="content-block">
+            <div class="content-label">Tagline</div>
+            <div class="content-text">Transform Spaces Into Art</div>
+        </div>
+        <div class="content-block">
+            <div class="content-label">Hero Subline</div>
+            <div class="content-text">Award-winning architecture that transcends the ordinary — crafting spaces that inspire, endure, and elevate.</div>
+        </div>
+
+        <h2>Cinematic Theme Direction</h2>
+        <div class="theme-direction">
+            The cinematic experience should evoke <strong>luxury in motion</strong> — slow, deliberate camera movements through meticulously designed spaces. Think golden-hour light streaming through floor-to-ceiling glass, architectural lines that guide the eye, and materials (concrete, wood, brass) that feel tactile even on screen. The mood is <strong>aspirational yet grounded</strong>, blending the precision of modernist design with the warmth of human-centered spaces. Every frame should whisper: "This is where art lives."
+        </div>
+    </div>
+</body>
+</html>
