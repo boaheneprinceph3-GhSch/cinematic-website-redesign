@@ -9,61 +9,13 @@
     gsap.registerPlugin(ScrollTrigger);
     
     // ───────────────────────────────────────────────────────
-    // 1. MUX VIDEO SETUP WITH HLS.JS
+    // 1. SCROLL-SCRUBBED VIDEO (Self-hosted)
     // ───────────────────────────────────────────────────────
     
     const video = document.getElementById('hero-video');
     const hero = document.querySelector('.hero');
-    const MUX_PLAYBACK_ID = 'GaXk3Mg8nBRfBd1j7ECAw5cOrgwLh3hQQ58402kZitJI';
-    // Force high quality: rendition_order=desc starts at highest quality, max_resolution ensures 1080p
-    const MUX_VIDEO_URL = `https://stream.mux.com/${MUX_PLAYBACK_ID}.m3u8?rendition_order=desc&max_resolution=1080p`;
     
     if (video && hero) {
-        // Check if HLS is supported natively (Safari)
-        if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = MUX_VIDEO_URL;
-            setupScrollScrubbing();
-        }
-        // Use HLS.js for other browsers
-        else if (Hls.isSupported()) {
-            const hls = new Hls({
-                enableWorker: true,
-                lowLatencyMode: false,
-                backBufferLength: 90,
-                // Quality settings for better video quality
-                startLevel: -1,  // -1 = auto-select based on bandwidth (will use rendition_order from Mux)
-                capLevelToPlayerSize: false,  // Don't limit quality based on player size
-                maxMaxBufferLength: 600,  // Allow more buffering for smoother playback
-                abrEwmaDefaultEstimate: 5000000  // Start with 5Mbps estimate (optimistic for high quality)
-            });
-            
-            hls.loadSource(MUX_VIDEO_URL);
-            hls.attachMedia(video);
-            
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                console.log('✅ Mux video loaded successfully');
-                setupScrollScrubbing();
-            });
-            
-            hls.on(Hls.Events.ERROR, function(event, data) {
-                if (data.fatal) {
-                    console.error('❌ Mux video error:', data);
-                }
-            });
-        }
-        // Fallback for browsers that don't support HLS
-        else {
-            console.warn('⚠️ HLS not supported, video may not play');
-            video.src = MUX_VIDEO_URL;
-            setupScrollScrubbing();
-        }
-    }
-    
-    // ───────────────────────────────────────────────────────
-    // 2. SCROLL-SCRUBBED VIDEO FUNCTION
-    // ───────────────────────────────────────────────────────
-    
-    function setupScrollScrubbing() {
         video.addEventListener('loadedmetadata', function() {
             const scrollLength = () => hero.offsetHeight - window.innerHeight;
             
@@ -328,6 +280,5 @@
     
     console.log('%c✨ Balstudio Cinematic Site', 'font-size: 16px; font-weight: bold; color: #d4af37;');
     console.log('%cBuilt with vanilla JS, GSAP, and modern CSS', 'font-size: 12px; color: #8b7355;');
-    console.log('%cVideo powered by Mux (adaptive streaming)', 'font-size: 12px; color: #5a5a5e;');
     
 })();
