@@ -18,6 +18,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
+    <!-- HLS.js for Mux adaptive streaming -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
     <link rel="stylesheet" href="styles.css">
     <script src="waves-background.js" defer></script>
 </head>
@@ -36,9 +39,10 @@
         </div>
     </nav>
 
-    <!-- Hero Section — Scroll-scrubbed video -->
+    <!-- Hero Section — Scroll-scrubbed Mux video -->
     <section class="hero" id="hero">
-        <video id="hero-video" src="assets/hero.mp4" muted playsinline preload="metadata" poster="assets/hero-poster.jpg"></video>
+        <!-- Mux Video with HLS.js for adaptive streaming -->
+        <video id="hero-video" muted playsinline preload="metadata" crossorigin="anonymous"></video>
         
         <!-- Text Mask Reveal Overlay -->
         <div class="hero-mask-overlay">
