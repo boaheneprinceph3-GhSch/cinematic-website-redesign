@@ -14,7 +14,7 @@
     
     const video = document.getElementById('hero-video');
     const hero = document.querySelector('.hero');
-    const MUX_PLAYBACK_ID = 'L77fJqd4MVHPZexaitIAtdULZVBtm6mIrbwKb2kDTqks';
+    const MUX_PLAYBACK_ID = 'GaXk3Mg8nBRfBd1j7ECAw5cOrgwLh3hQQ58402kZitJI';
     const MUX_VIDEO_URL = `https://stream.mux.com/${MUX_PLAYBACK_ID}.m3u8`;
     
     if (video && hero) {
