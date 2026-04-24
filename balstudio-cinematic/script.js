@@ -9,28 +9,46 @@
     gsap.registerPlugin(ScrollTrigger);
     
     // ───────────────────────────────────────────────────────
-    // 1. SCROLL-SCRUBBED VIDEO (Self-hosted)
+    // 1. SCROLL-SCRUBBED VIDEO (Self-hosted, optimized)
     // ───────────────────────────────────────────────────────
     
     const video = document.getElementById('hero-video');
     const hero = document.querySelector('.hero');
     
     if (video && hero) {
+        let previousVideoTime = 0;
+        let isReady = false;
+        
+        // Mark video as ready when metadata loads
         video.addEventListener('loadedmetadata', function() {
-            const scrollLength = () => hero.offsetHeight - window.innerHeight;
-            
-            window.addEventListener('scroll', function() {
-                const rect = hero.getBoundingClientRect();
-                const scrolled = Math.min(Math.max(-rect.top, 0), scrollLength());
-                const progress = scrolled / scrollLength();
-                
-                if (!isNaN(video.duration)) {
-                    video.currentTime = progress * video.duration;
-                }
-            }, { passive: true });
-            
-            console.log('✅ Scroll-scrubbing enabled (video duration:', video.duration.toFixed(2), 'seconds)');
+            isReady = true;
+            console.log('✅ Video ready for scroll-scrubbing (duration:', video.duration.toFixed(2), 'seconds)');
         });
+        
+        // Optimized scroll-scrubbing using requestAnimationFrame
+        function animate() {
+            // Only scrub if video metadata is loaded
+            if (isReady && video.duration) {
+                const rect = hero.getBoundingClientRect();
+                const scrollLength = hero.offsetHeight - window.innerHeight;
+                const scrolled = Math.min(Math.max(-rect.top, 0), scrollLength);
+                const scrollPercent = scrolled / scrollLength;
+                
+                const currentVideoTime = scrollPercent * video.duration;
+                
+                // Prevent excessive seeking (performance optimization)
+                // Only update if difference is greater than 0.04 seconds (~1 frame at 24fps)
+                if (Math.abs(currentVideoTime - previousVideoTime) > 0.04) {
+                    previousVideoTime = currentVideoTime;
+                    video.currentTime = currentVideoTime;
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Start animation loop immediately
+        requestAnimationFrame(animate);
     }
     
     // ───────────────────────────────────────────────────────
