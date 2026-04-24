@@ -14,6 +14,7 @@
     
     const video = document.getElementById('hero-video');
     const hero = document.querySelector('.hero');
+    const videoLoading = document.getElementById('video-loading');
     
     if (video && hero) {
         let previousVideoTime = 0;
@@ -22,6 +23,12 @@
         // Mark video as ready when metadata loads
         video.addEventListener('loadedmetadata', function() {
             isReady = true;
+            
+            // Hide loading indicator with smooth fade
+            if (videoLoading) {
+                videoLoading.classList.add('hidden');
+            }
+            
             console.log('✅ Video ready for scroll-scrubbing (duration:', video.duration.toFixed(2), 'seconds)');
         });
         
